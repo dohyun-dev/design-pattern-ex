@@ -1,4 +1,4 @@
-package com.dohyundev.structural.factory_method;
+package com.dohyundev.creational.factory_method;
 
 public abstract class ProductFactory {
     public final Product create() {

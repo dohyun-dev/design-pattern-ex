@@ -1,4 +1,4 @@
-package com.dohyundev.structural.factory_method;
+package com.dohyundev.creational.factory_method;
 
 public class ConcreteFactoryB extends ProductFactory {
     @Override

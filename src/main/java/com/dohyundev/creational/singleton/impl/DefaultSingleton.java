@@ -1,4 +1,4 @@
-package com.dohyundev.structural.singleton.impl;
+package com.dohyundev.creational.singleton.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;

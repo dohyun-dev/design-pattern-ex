@@ -1,31 +1,19 @@
-package com.dohyundev.structural.singleton.impl;
+package com.dohyundev.creational.singleton.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class ThreadSafeSingleton3 {
+public class ThreadSafeSingleton2 {
+    private static final ThreadSafeSingleton2 instance = new ThreadSafeSingleton2();
 
-    private static volatile ThreadSafeSingleton3 instance;
-
-    private ThreadSafeSingleton3() {
+    private ThreadSafeSingleton2() {
         System.out.println("생성자 호출: " + this);
     }
 
-    public static ThreadSafeSingleton3 getInstance() {
-        if (instance == null) {
-            makeInstance();
-        }
+    public static ThreadSafeSingleton2 getInstance() {
         return instance;
-    }
-
-    private static void makeInstance() {
-        synchronized (ThreadSafeSingleton3.class) {
-            if (instance == null) {
-                instance = new ThreadSafeSingleton3();
-            }
-        }
     }
 
     /**
@@ -33,10 +21,10 @@ public class ThreadSafeSingleton3 {
      * 동시에 여러 thread 접근 가능
      */
     public static void main(String[] args) {
-        List<ThreadSafeSingleton3> instances = Collections.synchronizedList(new ArrayList<>());
+        List<ThreadSafeSingleton2> instances = Collections.synchronizedList(new ArrayList<>());
 
         Runnable task = () -> {
-            ThreadSafeSingleton3 singleton = ThreadSafeSingleton3.getInstance();
+            ThreadSafeSingleton2 singleton = ThreadSafeSingleton2.getInstance();
             instances.add(singleton);
         };
 

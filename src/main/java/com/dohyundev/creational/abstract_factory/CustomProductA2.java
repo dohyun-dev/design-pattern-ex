@@ -1,6 +1,6 @@
-package com.dohyundev.structural.abstract_factory;
+package com.dohyundev.creational.abstract_factory;
 
-public class CustomProductB1 extends ProductB {
+public class CustomProductA2 extends ProductA {
     @Override
     public void use() {
         System.out.println(this.getClass().getName());

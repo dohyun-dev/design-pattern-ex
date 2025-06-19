@@ -1,4 +1,4 @@
-package com.dohyundev.structural.abstract_factory;
+package com.dohyundev.creational.abstract_factory;
 
 public abstract class ProductB {
     public abstract void use();

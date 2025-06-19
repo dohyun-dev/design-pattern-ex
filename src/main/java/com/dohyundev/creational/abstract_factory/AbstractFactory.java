@@ -1,4 +1,4 @@
-package com.dohyundev.structural.abstract_factory;
+package com.dohyundev.creational.abstract_factory;
 
 public interface AbstractFactory {
     ProductA createProductA();
