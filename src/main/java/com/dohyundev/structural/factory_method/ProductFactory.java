@@ -1,6 +1,6 @@
 package com.dohyundev.structural.factory_method;
 
-public abstract class AbstractFactory {
+public abstract class ProductFactory {
     public final Product create() {
         Product product = createProduct();
         product.setting();
