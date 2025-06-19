@@ -7,31 +7,18 @@ import java.util.stream.IntStream;
 
 public class ThreadSafeSingleton3 {
 
-    private static volatile ThreadSafeSingleton3 instance;
-
     private ThreadSafeSingleton3() {
         System.out.println("생성자 호출: " + this);
     }
 
+    private static class Holder {
+        private static final ThreadSafeSingleton3 INSTANCE = new ThreadSafeSingleton3();
+    }
+
     public static ThreadSafeSingleton3 getInstance() {
-        if (instance == null) {
-            makeInstance();
-        }
-        return instance;
+        return Holder.INSTANCE;
     }
 
-    private static void makeInstance() {
-        synchronized (ThreadSafeSingleton3.class) {
-            if (instance == null) {
-                instance = new ThreadSafeSingleton3();
-            }
-        }
-    }
-
-    /**
-     * Thread-Safe 하지 않음
-     * 동시에 여러 thread 접근 가능
-     */
     public static void main(String[] args) {
         List<ThreadSafeSingleton3> instances = Collections.synchronizedList(new ArrayList<>());
 
@@ -53,7 +40,6 @@ public class ThreadSafeSingleton3 {
             }
         });
 
-        // 중복 여부 검사
         long distinctCount = instances.stream().distinct().count();
         System.out.println("\n서로 다른 인스턴스 수: " + distinctCount);
     }
