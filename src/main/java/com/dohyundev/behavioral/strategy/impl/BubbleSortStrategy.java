@@ -4,15 +4,18 @@ import com.dohyundev.behavioral.strategy.SortStrategy;
 
 public class BubbleSortStrategy implements SortStrategy {
     @Override
-    public int[] sort(int[] array) {
-        int[] result = array.clone();
-        for (int i = 0; i < result.length - 1; i++) {
-            for (int j = 0; j < result.length - i - 1; j++) {
-                if (result[j] > result[j+1]) {
-                    swap(result, j, j + 1);
+    public void sort(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j+1]) {
+                    swap(array, j, j + 1);
                 }
             }
         }
-        return result;
+    }
+
+    @Override
+    public void printStartMessage() {
+        System.out.println("버블솔트 시작");
     }
 }

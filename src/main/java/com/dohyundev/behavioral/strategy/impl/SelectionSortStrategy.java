@@ -5,19 +5,20 @@ import com.dohyundev.behavioral.strategy.SortStrategy;
 public class SelectionSortStrategy implements SortStrategy {
 
     @Override
-    public int[] sort(int[] array) {
-        int[] result = array.clone();
-
-        for (int i = 0; i < result.length; i++) {
+    public void sort(int[] array) {
+        for (int i = 0; i < array.length; i++) {
             int minIndex = i;
-            for (int j = i + 1; j < result.length; j++) {
-                if (result[minIndex] > result[j]) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[minIndex] > array[j]) {
                     minIndex = j;
                 }
             }
-            swap(result, i, minIndex);
+            swap(array, i, minIndex);
         }
+    }
 
-        return result;
+    @Override
+    public void printStartMessage() {
+        System.out.println("선택정렬 시작");
     }
 }

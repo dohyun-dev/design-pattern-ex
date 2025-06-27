@@ -10,12 +10,13 @@ public class StrategyPatternClient {
     public static void main(String[] args) {
         int[] target = {3, 2, 1, 1, 2, 3, 4};
 
-        SortService bubleSortService = new SortService(new BubbleSortStrategy());
-        SortService selectionSortService = new SortService(new SelectionSortStrategy());
-        SortService insertionSortService = new SortService(new InsertionSortStrategy());
+        SortContext sortContext = new SortContext(new BubbleSortStrategy());
+        System.out.println(Arrays.toString(Arrays.stream(sortContext.sort(target)).toArray()));
 
-        System.out.println(Arrays.toString(Arrays.stream(bubleSortService.sort(target)).toArray()));
-        System.out.println(Arrays.toString(Arrays.stream(selectionSortService.sort(target)).toArray()));
-        System.out.println(Arrays.toString(Arrays.stream(insertionSortService.sort(target)).toArray()));
+        sortContext.setSortStrategy(new SelectionSortStrategy());
+        System.out.println(Arrays.toString(Arrays.stream(sortContext.sort(target)).toArray()));
+
+        sortContext.setSortStrategy(new InsertionSortStrategy());
+        System.out.println(Arrays.toString(Arrays.stream(sortContext.sort(target)).toArray()));
     }
 }
