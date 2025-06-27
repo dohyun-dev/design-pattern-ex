@@ -1,4 +1,4 @@
-package com.dohyundev.adapter;
+package com.dohyundev.structural.adapter;
 
 /**
  * 호환되지 않는 인터페이스들을 연결하는 디자인 패턴
