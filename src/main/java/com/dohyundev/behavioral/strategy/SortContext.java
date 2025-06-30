@@ -3,6 +3,9 @@ package com.dohyundev.behavioral.strategy;
 public class SortContext {
     private SortStrategy sortStrategy;
 
+    public SortContext() {
+    }
+
     public SortContext(SortStrategy defaultStrategy) {
         this.sortStrategy = defaultStrategy;
     }
@@ -11,9 +14,10 @@ public class SortContext {
         this.sortStrategy = sortStrategy;
     }
 
-    public final int[] sort(int[] array) {
+    public int[] sort(int[] array) {
         sortStrategy.printStartMessage();
-        sortStrategy.sort(array);
-        return array;
+        int[] cloneArray = array.clone();
+        sortStrategy.sort(cloneArray);
+        return cloneArray;
     }
 }
